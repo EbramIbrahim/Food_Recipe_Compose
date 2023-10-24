@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="tomato_color">#d62e2e</color>
+    <color name="corn_color">#f9de3e</color>
+    <color name="chicken_color">#E6B0DB</color>
+    <color name="egg_color">#fff7ad</color>
+    <color name="garlic_color">#f0ede8</color>
+    <color name="carrot_color">#ffb745</color>
+    <color name="banana_color">#ffe700</color>
+    <color name="eggplant_color">#8a5689</color>
+    <color name="coconut_color">#ecfbf4</color>
+    <color name="lemon_color">#E6DD84</color>
+    <color name="butter_color">#D6CB5B</color>
+    <color name="avocado_color">#9DC14B</color>
+    <color name="apple_color">#d62e2e</color>
+
+</resources>
