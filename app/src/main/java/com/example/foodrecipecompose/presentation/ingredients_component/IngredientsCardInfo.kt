@@ -1,4 +1,4 @@
-package com.example.foodrecipecompose.presentation.main_component
+package com.example.foodrecipecompose.presentation.ingredients_component
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -18,10 +18,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -40,6 +43,11 @@ import com.example.foodrecipecompose.utils.Screen
 fun IngredientsScreen(
     navController: NavController
 ) {
+
+
+    var isSheetEnabled by remember {
+        mutableStateOf(false)
+    }
 
     Column(
         modifier = Modifier
@@ -95,7 +103,7 @@ fun IngredientsScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { isSheetEnabled = true },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(11.dp)
@@ -107,8 +115,13 @@ fun IngredientsScreen(
                 fontWeight = FontWeight.Light
             )
         }
+    }
 
-
+    if (isSheetEnabled) {
+        IngredientsBottomSheet(
+           onSheetDismiss = { isSheetEnabled = false },
+            navController = navController
+        )
     }
 }
 

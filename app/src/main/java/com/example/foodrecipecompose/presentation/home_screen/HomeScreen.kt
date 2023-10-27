@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.foodrecipecompose.presentation.country_screen.CountriesList
-import com.example.foodrecipecompose.presentation.main_component.IngredientsScreen
+import com.example.foodrecipecompose.presentation.ingredients_component.IngredientsScreen
 import com.example.foodrecipecompose.presentation.main_component.RandomMealScreen
 import com.example.foodrecipecompose.presentation.state_event.MealsState
 
