@@ -12,6 +12,9 @@ sealed interface MealsEvents {
     class DeleteMeal(val mealEntity: MealEntity): MealsEvents
     object ShowDialog: MealsEvents
     object HideDialog: MealsEvents
+
+    class MealSortType(val sortType: SortType): MealsEvents
+
 }
 
 

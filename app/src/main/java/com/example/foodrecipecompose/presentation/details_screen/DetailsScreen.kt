@@ -43,6 +43,8 @@ import com.example.foodrecipecompose.data.model.MealDetails
 import com.example.foodrecipecompose.presentation.main_component.shareRecipeLink
 import com.example.foodrecipecompose.presentation.state_event.MealsEvents
 import com.example.foodrecipecompose.presentation.state_event.MealsState
+import java.util.Calendar
+import java.util.Date
 
 @Composable
 fun DetailsScreen(
@@ -142,7 +144,9 @@ fun MealDetailsScreen(mealDetails: MealDetails, onEvent: (MealsEvents) -> Unit, 
                                     mealId = mealDetails.idMeal,
                                     mealCountry = mealDetails.strArea,
                                     mealName = mealDetails.strMeal,
-                                    mealImage = mealDetails.strMealThumb
+                                    mealImage = mealDetails.strMealThumb,
+                                    times = Calendar.getInstance().time.time
+
                                 )
                             )
                         )
@@ -153,7 +157,8 @@ fun MealDetailsScreen(mealDetails: MealDetails, onEvent: (MealsEvents) -> Unit, 
                                     mealId = mealDetails.idMeal,
                                     mealCountry = mealDetails.strArea,
                                     mealName = mealDetails.strMeal,
-                                    mealImage = mealDetails.strMealThumb
+                                    mealImage = mealDetails.strMealThumb,
+                                    times = Calendar.getInstance().time.time
                                 )
                             )
                         )

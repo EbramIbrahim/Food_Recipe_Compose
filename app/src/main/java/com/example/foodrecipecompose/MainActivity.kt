@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FoodRecipeComposeTheme {
                 val viewModel: MealsViewModel = hiltViewModel()
-                val mealState by viewModel.allMeals.collectAsState()
+                val mealState by viewModel.state.collectAsState()
                 val navController = rememberNavController()
                 val context = LocalContext.current
 

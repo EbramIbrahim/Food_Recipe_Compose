@@ -2,7 +2,6 @@ package com.example.foodrecipecompose.domain.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.foodrecipecompose.data.local.MealDatabase
 import com.example.foodrecipecompose.data.remote.MealsApi
 import com.example.foodrecipecompose.data.repository.MealsRepositoryImpl
@@ -10,7 +9,7 @@ import com.example.foodrecipecompose.domain.usecase.AllUseCase
 import com.example.foodrecipecompose.domain.usecase.GetCountryMealsUseCase
 import com.example.foodrecipecompose.domain.usecase.GetMealDetailsUseCase
 import com.example.foodrecipecompose.domain.usecase.GetRandomCategoryMealsUseCase
-import com.example.foodrecipecompose.domain.usecase.GetSavedMealsUseCase
+import com.example.foodrecipecompose.domain.usecase.database_usecase.GetSavedMealsUseCase
 import com.example.foodrecipecompose.domain.usecase.GetSearchedMealUseCase
 import com.example.foodrecipecompose.utils.Constant.BASE_URL
 import dagger.Module

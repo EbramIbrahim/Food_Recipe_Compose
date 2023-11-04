@@ -12,6 +12,7 @@ data class MealsState(
     val countryMeals: List<CountryMeals> = emptyList(),
     val mealDetails: List<MealDetails> = emptyList(),
     val mealsEntity: List<MealEntity> = emptyList(),
+    val sortType: SortType = SortType.TIME,
     val isLoading: Boolean = false,
     val error: String? = null,
     val showHideDialog: Boolean = false

@@ -16,7 +16,6 @@ class MealsRepositoryImpl @Inject constructor(
     private val database: MealDatabase
 ) {
 
-
     suspend fun getRandomCategoryMeals(category: String): RandomCategoryMealsResponse {
         return api.getRandomCategoryMeals(category)
     }
@@ -45,7 +44,17 @@ class MealsRepositoryImpl @Inject constructor(
         return database.mealDao().getSavedMeals()
     }
 
+    fun getMealsByTime(): Flow<List<MealEntity>> {
+        return database.mealDao().getMealsByTime()
+    }
 
+    fun getMealsByCountry(): Flow<List<MealEntity>> {
+        return database.mealDao().getMealsByCountry()
+    }
+
+    fun getMealsByMealName(): Flow<List<MealEntity>> {
+        return database.mealDao().getMealsByMealName()
+    }
 
 
 

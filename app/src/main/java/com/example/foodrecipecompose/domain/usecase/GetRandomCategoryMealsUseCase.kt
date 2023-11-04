@@ -15,15 +15,15 @@ class GetRandomCategoryMealsUseCase @Inject constructor(
 ) {
 
 
-    operator fun invoke(category: String): Flow<Resource<RandomCategoryMealsResponse>> = channelFlow {
+    operator fun invoke(category: String): Flow<Resource<RandomCategoryMealsResponse>> = flow {
         try {
-            send(Resource.Loading())
+            emit(Resource.Loading())
             delay(2000L)
             val result = repository.getRandomCategoryMeals(category)
-            send(Resource.Success(result))
+            emit(Resource.Success(result))
 
         } catch (e: Exception){
-            send(Resource.Error(e.message))
+            emit(Resource.Error(e.message))
         }
     }
 }

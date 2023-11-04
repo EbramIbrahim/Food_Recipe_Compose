@@ -14,13 +14,22 @@ interface MealDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMeal(mealEntity: MealEntity)
 
-
     @Delete
     suspend fun deleteMeal(mealEntity: MealEntity)
 
-
     @Query("SELECT * FROM meal_table")
     fun getSavedMeals(): Flow<List<MealEntity>>
+
+    @Query("SELECT * FROM meal_table ORDER BY times ASC")
+    fun getMealsByTime(): Flow<List<MealEntity>>
+
+    @Query("SELECT * FROM meal_table ORDER BY mealCountry ASC")
+    fun getMealsByCountry(): Flow<List<MealEntity>>
+
+    @Query("SELECT * FROM meal_table ORDER BY mealName ASC")
+    fun getMealsByMealName(): Flow<List<MealEntity>>
+
+
 }
 
 

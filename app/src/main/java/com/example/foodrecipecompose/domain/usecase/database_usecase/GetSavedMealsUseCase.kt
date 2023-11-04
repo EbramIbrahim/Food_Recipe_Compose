@@ -1,4 +1,4 @@
-package com.example.foodrecipecompose.domain.usecase
+package com.example.foodrecipecompose.domain.usecase.database_usecase
 
 import com.example.foodrecipecompose.data.local.MealEntity
 import com.example.foodrecipecompose.data.repository.MealsRepositoryImpl

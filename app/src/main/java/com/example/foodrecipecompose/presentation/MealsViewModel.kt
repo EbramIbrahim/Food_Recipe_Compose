@@ -8,14 +8,20 @@ import com.example.foodrecipecompose.data.repository.MealsRepositoryImpl
 import com.example.foodrecipecompose.domain.usecase.AllUseCase
 import com.example.foodrecipecompose.presentation.state_event.MealsEvents
 import com.example.foodrecipecompose.presentation.state_event.MealsState
+import com.example.foodrecipecompose.presentation.state_event.SortType
 import com.example.foodrecipecompose.utils.Constant
 import com.example.foodrecipecompose.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,8 +34,26 @@ class MealsViewModel @Inject constructor(
 
 
     private val _allMeals: MutableStateFlow<MealsState> = MutableStateFlow(MealsState())
-    val allMeals = _allMeals.asStateFlow()
 
+    private val _sortType = MutableStateFlow(SortType.TIME)
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val _sortedMeals = _sortType.flatMapLatest {
+        when(it) {
+            SortType.TIME -> repository.getMealsByTime()
+            SortType.COUNTRY -> repository.getMealsByCountry()
+            SortType.MEAL_NAME -> repository.getMealsByMealName()
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+
+    val state = combine(_allMeals,_sortType, _sortedMeals) { allMeals, sortType, sortedMeals ->
+
+        allMeals.copy(
+            sortType = sortType,
+            mealsEntity = sortedMeals
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), MealsState())
 
     init {
         onEvent(MealsEvents.InitScreen)
@@ -42,7 +66,11 @@ class MealsViewModel @Inject constructor(
             is MealsEvents.InitScreen -> {
                 val category = Constant.categories
                 getRandomCategoryMeals(category = category)
-                getSavedMeals()
+                //getSavedMeals()
+
+                //Emission from another coroutine is detected.
+                // I use Channel with send operator because
+                //FlowCollector is not thread-safe and concurrent emissions are prohibited.
 
             }
 
@@ -71,6 +99,10 @@ class MealsViewModel @Inject constructor(
             }
             MealsEvents.ShowDialog -> {
                 _allMeals.update { it.copy(showHideDialog = true) }
+            }
+
+            is MealsEvents.MealSortType -> {
+                _sortType.value = events.sortType
             }
         }
 

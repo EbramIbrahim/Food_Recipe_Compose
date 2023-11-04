@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_SEND
 
 fun Context.shareRecipeLink(url: String) {
+    // Implicit Intent
     val sendIntent = Intent(ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_TEXT, url)

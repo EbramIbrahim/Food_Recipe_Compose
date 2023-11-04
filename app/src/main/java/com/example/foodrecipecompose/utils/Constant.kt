@@ -39,7 +39,6 @@ object Constant {
         Ingredients("Lemon", R.color.lemon_color, R.drawable.lemon),
         Ingredients("Butter", R.color.butter_color, R.drawable.butter),
         Ingredients("Avocado", R.color.avocado_color, R.drawable.avocado),
-        Ingredients("Apple", R.color.apple_color, R.drawable.apple),
     )
 
     private val colors = arrayOf(

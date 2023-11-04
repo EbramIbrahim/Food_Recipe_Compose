@@ -9,5 +9,6 @@ data class MealEntity(
     val mealId: String,
     val mealName: String,
     val mealImage: String,
-    val mealCountry: String
+    val mealCountry: String,
+    val times: Long
 )
