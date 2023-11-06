@@ -44,8 +44,6 @@ import com.example.foodrecipecompose.presentation.main_component.shareRecipeLink
 import com.example.foodrecipecompose.presentation.state_event.MealsEvents
 import com.example.foodrecipecompose.presentation.state_event.MealsState
 import java.util.Calendar
-import java.util.Date
-
 @Composable
 fun DetailsScreen(
     mealsDetailsState: MealsState,

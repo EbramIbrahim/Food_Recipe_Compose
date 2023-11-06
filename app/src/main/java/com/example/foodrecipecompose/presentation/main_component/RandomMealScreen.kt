@@ -1,6 +1,5 @@
 package com.example.foodrecipecompose.presentation.main_component
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -16,7 +15,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,15 +41,6 @@ fun RandomMealScreen(
 ) {
 
     Column {
-
-
-        AnimatedVisibility(visible = state.isLoading) {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
-            }
-        }
-
-        AnimatedVisibility(visible = !state.isLoading) {
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = "Daily Inspiration",
@@ -70,7 +59,6 @@ fun RandomMealScreen(
 
             }
 
-        }
 
 
     }

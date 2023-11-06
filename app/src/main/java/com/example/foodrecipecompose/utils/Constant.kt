@@ -4,6 +4,7 @@ import com.example.foodrecipecompose.R
 import com.example.foodrecipecompose.data.model.Country
 import com.example.foodrecipecompose.data.model.Ingredients
 
+
 object Constant {
 
 
@@ -41,21 +42,6 @@ object Constant {
         Ingredients("Avocado", R.color.avocado_color, R.drawable.avocado),
     )
 
-    private val colors = arrayOf(
-        R.color.apple_color,
-        R.color.tomato_color,
-        R.color.corn_color,
-        R.color.chicken_color,
-        R.color.egg_color,
-        R.color.garlic_color,
-        R.color.carrot_color,
-        R.color.banana_color,
-        R.color.eggplant_color,
-        R.color.coconut_color,
-        R.color.lemon_color,
-        R.color.butter_color,
-        R.color.avocado_color,
-    ).random()
 
     val countries = arrayOf(
         Country("Canadian",R.drawable.canada),

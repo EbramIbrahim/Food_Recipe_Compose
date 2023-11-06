@@ -24,8 +24,7 @@ fun SetUpNavHost(
     navHostController: NavHostController,
     context: Context,
     modifier: Modifier
-
-) {
+    ) {
 
     NavHost(
         navController = navHostController,

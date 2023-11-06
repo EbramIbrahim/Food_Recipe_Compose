@@ -33,8 +33,6 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val context = LocalContext.current
 
-
-
                 Scaffold(bottomBar = {
 
                     BottomNavItemScreen(
@@ -69,7 +67,7 @@ class MainActivity : ComponentActivity() {
                         state = mealState,
                         navHostController = navController,
                         context = context,
-                        modifier = Modifier.padding(it)
+                        modifier = Modifier.padding(it),
                     )
                 }
             }
